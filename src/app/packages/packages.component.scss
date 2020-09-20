@@ -1,0 +1,125 @@
+.title {
+
+  font-size: 20px;
+  width: 20%;
+  padding-top: 3%;
+
+}
+
+
+.card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  height: 27rem;
+  width: 22rem;
+  margin-top: 2rem;
+}
+
+
+
+.card img {
+  height: 10rem;
+  width: 22rem;
+  object-fit: cover;
+}
+
+.card-info {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h5 {
+  font-weight: 500;
+  opacity: .9;
+}
+
+h6 {
+  position: absolute;
+  border: 1px solid #1593FF;
+  border-radius: 0.25em;
+  background-color: #1593FF;
+  top: 9rem;
+  left: 1rem;
+  padding: .2rem;
+  color: white;
+  font-weight: 500;
+}
+
+#private {
+  border: 1px solid #ff5722;
+  background-color: #ff5722;
+}
+
+#daytrip {
+  border: 1px solid #d3de32;
+  background-color: #d3de32;
+}
+
+#allday {
+  border: 1px solid #e8505b;
+  background-color: #e8505b;
+}
+
+.icons {
+  font-family: 'Raleway', sans-serif;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.fa-clock,
+.fa-running,
+.fa-user-friends {
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+
+span {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  font-size: .9rem;
+  line-height: 1.2;
+  opacity: .8;
+}
+
+.from {
+  position: absolute;
+  left: 16rem;
+  top: 18rem;
+  font-size: .9rem;
+  font-weight: 500;
+  opacity: .6;
+}
+
+.price {
+  position: absolute;
+  left: 16rem;
+  top: 19.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  opacity: .9;
+}
+
+.person {
+  position: absolute;
+  left: 15rem;
+  top: 21.3rem;
+  font-size: .9rem;
+  font-weight: 500;
+  opacity: .6;
+}
+
+button {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+  flex-wrap: wrap;
+  margin: 4px;
+  border-radius: 4px;
+  background-color: #7f9cf5;
+
+}

@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <div class="logo">
+    <img src="http://codenawis.com/componentity/wp-content/uploads/2020/08/logo-componentity-%E2%80%93-9.png" class="a">
+  </div>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link " [ngClass]="{'active':index==0}" (click)="index=0" routerLink="/home">Home</a>
+      <a class="nav-item nav-link " [ngClass]="{'active':index==1}" (click)="index=1"
+        routerLink="/packages">Packages</a>
+      <a class="nav-item nav-link " [ngClass]="{'active':index==2}" (click)="index=2" routerLink="/contactus">Contact
+        us</a>
+      <a class="nav-item nav-link " (click)="openDialogLogin()">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

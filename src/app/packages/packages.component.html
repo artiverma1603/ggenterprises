@@ -1,0 +1,23 @@
+<div class="title">
+
+  <button type="button" class="btn btn-primary">Add Packages</button>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let package of packages">
+    <div class=" card mb-5 ml-5">
+      <img src="https://www.pngitem.com/pimgs/m/526-5268844_tv-fridge-washing-machine-hd-png-download.png">
+      <div class="card-info">
+        <h2>package description :- {{package.enDesc}}</h2>
+        <h6>{{ package.enName }}</h6>
+
+        <span>Price :-{{ package.price }}</span><br>
+        <span>Availablity :-{{ package.isAvailable }}</span><br>
+        <span>Items:-{{ package.items [0]}},{{ package.items [1]}},{{ package.items [2]}},{{ package.items [3]}}</span>
+        <br>
+        <button type="button" class="btn btn-primary">Know More</button>
+        <button type="button" class="btn btn-primary">Get Quoto</button>
+      </div>
+    </div>
+  </div>
