@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,20 @@ $ggenterprises-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$ggenterprises-theme: mat-light-theme((
-  color: (
-    primary: $ggenterprises-primary,
-    accent: $ggenterprises-accent,
-    warn: $ggenterprises-warn,
+$ggenterprises-theme: mat-light-theme(
+  (
+    color: (
+      primary: $ggenterprises-primary,
+      accent: $ggenterprises-accent,
+      warn: $ggenterprises-warn,
+    ),
   )
-));
+);
+
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div img,
+.ng-image-slider .ng-image-slider-container .main .main-inner .img-div video {
+  object-fit: cover;
+}
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -37,9 +43,32 @@ $ggenterprises-theme: mat-light-theme((
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   outline: none !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: fit-content;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.cdk-overlay-pane {
+  overflow: auto;
+}
+@media only screen and (min-device-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(127, 156, 245);
+    background: radial-gradient(
+      circle,
+      rgba(127, 156, 245, 1) 0%,
+      rgba(127, 156, 245, 0) 100%
+    );
+  }
+}

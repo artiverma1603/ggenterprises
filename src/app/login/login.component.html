@@ -1,16 +1,52 @@
 <div class="main">
-
-  <div class="kutu">
-    <div class="form-giris">
-      <input type="text" name="" required="">
-      <label>User Name</label>
+  <form class="kutu" #form="ngForm" (submit)="login()" autocomplete="off">
+    <div class="logo">
+      <img
+        src="../../assets/gg-logo.png"
+        alt="logo"
+        style="width: 120px; margin: 0 auto"
+      />
+    </div>
+    <div class="kayit-yazi head"><a>Admin Login</a></div>
+    <div
+      class="col-lg-12 alert alert-danger"
+      role="alert"
+      *ngIf="authService.isWrong"
+    >
+      <img src="../../assets/alert.png" alt="alert" />
+      <span>Incorrect Email or Password</span>
     </div>
     <div class="form-giris">
-      <input type="password" name="" required="">
-      <label>Password</label>
+      <input
+        type="email"
+        email
+        required
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="authService.admin.email"
+        placeholder="Email"
+      />
     </div>
-    <input type="submit" class="girisbuton" value="LOGIN">
-    <div class="kayit-yazi"> <a href="#">Forget Password?</a></div>
-
-  </div>
+    <div class="form-giris">
+      <input
+        type="password"
+        name="password"
+        #password="ngModel"
+        [(ngModel)]="authService.admin.password"
+        placeholder="Password"
+      />
+    </div>
+    <input
+      *ngIf="!this.authService.loading"
+      type="submit"
+      [disabled]="!form.valid || this.authService.loading"
+      class="girisbuton"
+      value="LOGIN"
+    />
+    <div class="spinner" *ngIf="this.authService.loading">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </form>
 </div>

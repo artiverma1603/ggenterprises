@@ -1,0 +1,18 @@
+<div
+  class="delete-confirmation"
+  style="display: flex; flex-direction: column; align-items: center"
+>
+  <img src="../../assets/delete_round.gif" alt="delete" style="width: 200px" />
+  <h1 mat-dialog-title>Are You sure?</h1>
+  <div class="main" style="text-align: center; font-size: 12px">
+    Do you really want to delete the Package? This process cannot be undone.
+  </div>
+
+  <div
+    mat-dialog-actions
+    style="display: flex; justify-content: space-evenly; padding: 10% 0"
+  >
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-flat-button color="warn" (click)="onDelete()">Confirm</button>
+  </div>
+</div>

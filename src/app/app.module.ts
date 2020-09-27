@@ -10,11 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material/material.module';
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from 'src/environments/firabase';
-
-import { from } from 'rxjs';
-import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddComponent } from './packages/add/add.component';
+import { NgImageSliderModule } from 'ng-image-slider';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { MsgComponent } from './notifications/msg/msg.component';
+import { DeleteComponent } from './packages/delete/delete.component';
+import { ItemsComponent } from './packages/items/items.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +28,10 @@ import { AddComponent } from './packages/add/add.component';
     ContactusComponent,
     LoginComponent,
     AddComponent,
+    NotificationsComponent,
+    MsgComponent,
+    DeleteComponent,
+    ItemsComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,8 +39,10 @@ import { AddComponent } from './packages/add/add.component';
     FormsModule,
     MaterialModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    NgxUsefulSwiperModule,
+    AngularFireStorageModule,
     BrowserAnimationsModule,
+    NgImageSliderModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

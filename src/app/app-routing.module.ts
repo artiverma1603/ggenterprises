@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactusComponent } from './contactus/contactus.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AddComponent } from './packages/add/add.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { AuthGuard } from './login/auth.guard';
 import { PackagesComponent } from './packages/packages.component';
 
 const routes: Routes = [
@@ -12,7 +13,11 @@ const routes: Routes = [
   { path: 'contactus', component: ContactusComponent },
   { path: 'login', component: LoginComponent },
   { path: 'packages', component: PackagesComponent },
-  { path: 'add', component: AddComponent },
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

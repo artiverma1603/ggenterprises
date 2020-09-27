@@ -1,34 +1,114 @@
-<form>
+<form #form="ngForm">
   <div class="title">ADD PRODUCT FORM</div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
+  <div class="form-row top">
+    <div class="form-group col-lg-5 col-sm-10 upload">
+      <div class="placeholder" *ngIf="!service.imageUrl">
+        <input
+          type="file"
+          style="display: none"
+          id="image"
+          (change)="onUpload($event)"
+        />
+        <label for="image"
+          ><img src="../../../assets/addphoto.png" alt="image"
+        /></label>
+      </div>
+      <div class="preview" *ngIf="service.imageUrl">
+        <img [src]="service.imageUrl" alt="image" />
+        <button
+          mat-mini-fab
+          (click)="changeImage()"
+          aria-label="Example icon button with a menu icon"
+        >
+          <img src="../../../assets/change.png" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="form-group col-lg-5 col-sm-10 right">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Package Name"
+        name="enName"
+        #enName="ngModel"
+        [(ngModel)]="service.package.enName"
+        required
+      />
+      <input
+        type="text"
+        class="form-control center"
+        placeholder="Package Price"
+        name="price"
+        #price="ngModel"
+        [(ngModel)]="service.package.price"
+        oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); "
+        required
+      />
+      <textarea
+        class="form-control"
+        placeholder="Package Description"
+        name="enDesc"
+        #enDesc="ngModel"
+        [(ngModel)]="service.package.enDesc"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- <div class="form-row">
+    <div class="form-group col-md-10">
       <input type="text" class="form-control" placeholder="Add Product" />
     </div>
-    <div class="form-group col-md-4">
-      <input type="text" class="form-control" placeholder="Price" />
+  </div> -->
+  <div class="form-row">
+    <div class="form-group col-md-10">
+      <div class="hint">**Please use ENTER or COMMAA for adding Item.</div>
+      <mat-form-field class="example-chip-list" appearance="outline">
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip
+            *ngFor="let item of service.package.items"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(item)"
+          >
+            {{ item }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="New Item..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-8">
-      <textarea class="form-control" placeholder="Description"></textarea>
+    <div class="form-group col-md-5">
+      <mat-slide-toggle
+        (change)="service.package.isAvailable = !service.package.isAvailable"
+        [checked]="service.package.isAvailable"
+        >Available</mat-slide-toggle
+      >
+    </div>
+    <div class="form-group col-md-5 button">
+      <button class="reset" (click)="service.resetPackage()" mat-raised-button>
+        Reset
+      </button>
+      <button
+        class="submit"
+        matDialogClose
+        (click)="onSavePackage()"
+        mat-raised-button
+        [disabled]="
+          !form.valid ||
+          service.package.items.length == 0 ||
+          service.imageUrl == ''
+        "
+      >
+        Save
+      </button>
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-8">
-      <input type="text" class="form-control" placeholder="Add Product" />
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-8">
-      <input type="text" class="form-control" placeholder="Add Items" />
-    </div>
-  </div>
-  <div class="form-group col-md-4">
-    In stock <input type="checkbox">
-    Out of stock <input type="checkbox">
-  </div>
-
-
-
-  <button type="submit" class="btn btn-primary">ADD PRODUCT</button>
 </form>

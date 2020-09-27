@@ -2,55 +2,102 @@
   <div class="container">
     <div class="containerinfo">
       <div>
-        <h2>Contact Info</h2>
+        <div class="heading">Contact Info</div>
         <ul class="info">
           <li>
-            <span><img src="https://cdn.iconscout.com/icon/free/png-256/location-2551463-2134020.png" /></span>
-            <span>Greater Gurgaon Enterprises<br />
+            <span
+              ><img
+                src="https://cdn.iconscout.com/icon/free/png-256/location-2551463-2134020.png"
+            /></span>
+            <span
+              >Greater Gurgaon Enterprises<br />
               Ward no-18 peer colony near rajeev gandhi<br />
-              park Sohna , Gurgaon</span>
+              park Sohna , Gurgaon</span
+            >
           </li>
           <li>
-            <span><img src="https://icons.iconarchive.com/icons/icons8/windows-8/256/Mobile-Phone-icon.png" /></span>
-            <span>+91 8930761152 , +91 9992044529 </span>
+            <span
+              ><img
+                src="https://icons.iconarchive.com/icons/icons8/windows-8/256/Mobile-Phone-icon.png"
+            /></span>
+            <span
+              >+91 8930761152 <br />
+              +91 9812274562
+            </span>
           </li>
           <li>
-            <span><img src="https://www.shareicon.net/data/256x256/2015/12/01/680886_email_512x512.png" /></span>
-            <span>graetergurgaon5@gmail.com</span>
+            <span
+              ><img
+                src="https://www.shareicon.net/data/256x256/2015/12/01/680886_email_512x512.png"
+            /></span>
+            <span>greatergurgaon5@gmail.com</span>
           </li>
         </ul>
-
       </div>
     </div>
-    <div class="contactform">
-      <h2>Send a Message</h2>
+    <form class="contactform" #form="ngForm">
+      <div class="heading">Send a Message</div>
       <div class="formbox">
         <div class="inputBox w50">
-          <input type="text" name="" required />
-          <span>First Name</span>
+          <input
+            type="text"
+            name="firstName"
+            #firstName="ngModel"
+            required
+            [(ngModel)]="service.request.firstName"
+            placeholder="First Name"
+          />
         </div>
         <div class="inputBox w50">
-          <input type="text" name="" required />
-          <span>Last Name</span>
+          <input
+            type="text"
+            name="lastName"
+            #lastName="ngModel"
+            [(ngModel)]="service.request.lastName"
+            placeholder="Last Name"
+          />
         </div>
         <div class="inputBox w50">
-          <input type="text" name="" required />
-          <span>Email Address</span>
+          <input
+            type="text"
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="service.request.email"
+            placeholder="Email Address"
+          />
         </div>
         <div class="inputBox w50">
-          <input type="text" name="" required />
-          <span>Mobile No</span>
+          <input
+            type="text"
+            name="phoneNo"
+            #phoneNo="ngModel"
+            required
+            [(ngModel)]="service.request.phoneNo"
+            placeholder="Mobile Number"
+            oninput="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); "
+            minlength="10"
+          />
         </div>
         <div class="inputBox w100">
-          <textarea name="" required></textarea>
-          <span>Write your message here..</span>
+          <textarea
+            name="msg"
+            #msg="ngModel"
+            required
+            [(ngModel)]="service.request.msg"
+            placeholder="Write your message here.."
+          ></textarea>
         </div>
         <div class="inputBox w50">
-          <button class="button">
+          <button
+            mat-raised-button
+            class="button"
+            [disabled]="!form.valid"
+            (click)="service.saveRequest()"
+          >
             Send
           </button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </section>

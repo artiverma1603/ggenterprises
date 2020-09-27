@@ -1,23 +1,99 @@
-<div class="title">
+<div class="background">
+  <div class="add">
+    <div></div>
+    <div class="title">Packages</div>
+    <div class="button">
+      <button
+        *ngIf="service.auth.isLogin && service.auth.adminData"
+        (click)="onAddPackage()"
+        mat-raised-button
+      >
+        Add Package
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="screens">
+      <div class="card" *ngFor="let package of service.packages; let i = index">
+        <div class="box">
+          <div class="top">
+            <div class="topLeft">
+              <img src="../../assets/new.png" alt="handle" class="handle" />
+            </div>
+            <div
+              class="topRight"
+              *ngIf="service.auth.isLogin && service.auth.adminData"
+            >
+              <div class="switch-toggle">
+                <input
+                  id="status+{{ i }}"
+                  type="checkbox"
+                  [disabled]="service.wait"
+                  (change)="service.onChange(package.isAvailable, package.id)"
+                  [checked]="package.isAvailable"
+                />
+                <label for="status+{{ i }}"></label>
+              </div>
 
-  <button type="button" class="btn btn-primary">Add Packages</button>
-</div>
+              <img
+                src="../../assets/edit.png"
+                (click)="onEditPackage(package)"
+                alt="edit"
+              />
+              <img
+                src="../../assets/delete.png"
+                alt="delete"
+                (click)="onDeleteConfirmationDialog(package.id)"
+              />
+            </div>
+            <div class="topRight" *ngIf="!service.auth.isLogin">
+              <div
+                class="isAvailable"
+                [ngClass]="{
+                  avaiable: package.isAvailable,
+                  unavaiable: !package.isAvailable
+                }"
+              >
+                <span *ngIf="package.isAvailable">Available</span>
+                <span *ngIf="!package.isAvailable">Unavailable</span>
+              </div>
+            </div>
+          </div>
+          <div class="center">
+            <img
+              [src]="package.imageUrl"
+              alt="placeholder"
+              *ngIf="package.imageUrl"
+            />
+          </div>
+          <div class="bottom">
+            <div class="designType">
+              <div class="designName">
+                {{ package.enName }}
+              </div>
+              <div class="position">
+                <div class="positionInner">
+                  <img
+                    src="../../assets/price.png"
+                    alt="position"
+                    class="iconPosition"
+                  />
+                  <span class="textPosition"> {{ package.price }} </span>
+                </div>
+              </div>
+            </div>
+            <div class="desc">
+              {{ package.enDesc }}
+            </div>
+            <hr />
+            <div class="validity" (click)="service.onBottomSheet(package)">
+              Show Items : &nbsp;
 
-
-<div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let package of packages">
-    <div class=" card mb-5 ml-5">
-      <img src="https://www.pngitem.com/pimgs/m/526-5268844_tv-fridge-washing-machine-hd-png-download.png">
-      <div class="card-info">
-        <h2>package description :- {{package.enDesc}}</h2>
-        <h6>{{ package.enName }}</h6>
-
-        <span>Price :-{{ package.price }}</span><br>
-        <span>Availablity :-{{ package.isAvailable }}</span><br>
-        <span>Items:-{{ package.items [0]}},{{ package.items [1]}},{{ package.items [2]}},{{ package.items [3]}}</span>
-        <br>
-        <button type="button" class="btn btn-primary">Know More</button>
-        <button type="button" class="btn btn-primary">Get Quoto</button>
+              <span class="bold">{{ package.items.length }}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>

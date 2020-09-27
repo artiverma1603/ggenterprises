@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapies.com/css2?family=poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-
-
+$main: #fa3757;
+$button: #7f9cf5;
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "poppins", sans-serif;
 }
 
 section {
@@ -29,10 +27,11 @@ section::before {
 
 section .container {
   position: relative;
-  min-width: 1100px;
+  min-width: 80%;
   min-height: 550px;
   display: flex;
-  z-index: 1000;
+  z-index: 10;
+  flex-wrap: wrap;
 }
 
 section .container .containerinfo {
@@ -40,7 +39,7 @@ section .container .containerinfo {
   top: 70px;
   width: 350px;
   height: calc(100% - 80px);
-  background: rgb(160, 13, 33);
+  background: $main;
   z-index: 1;
   padding: 40px;
   display: flex;
@@ -49,7 +48,7 @@ section .container .containerinfo {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
 }
 
-section .container .containerinfo h2 {
+section .container .containerinfo .heading {
   color: #fff;
   font-size: 24px;
   font-weight: 500;
@@ -58,6 +57,8 @@ section .container .containerinfo h2 {
 section .container .containerinfo .info {
   position: relative;
   margin: 20px 0;
+  letter-spacing: 1px;
+  font-size: 16px;
 }
 
 section .container .containerinfo .info li {
@@ -77,14 +78,14 @@ section .container .containerinfo .info li span:nth-child(1) {
 section .container .containerinfo .info li span:nth-child(1) img {
   max-width: 100%;
   filter: invert(1);
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 section .container .containerinfo .info li span:nth-child(2) {
   color: white;
   margin-left: 10px;
   font-weight: 300;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 section .container .containerinfo .info li span:nth-child(1) img {
@@ -134,8 +135,8 @@ section .container .contactform {
   box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
 }
 
-section .container .contactform h2 {
-  color: #91077a;
+section .container .contactform .heading {
+  color: $button;
   font-size: 24px;
   font-weight: 500;
 }
@@ -178,30 +179,8 @@ section .container .contactform .formbox .inputBox textarea {
   min-height: 100px;
 }
 
-section .container .contactform .formbox .inputBox span {
-  position: absolute;
-  left: 0;
-  padding: 5px 0;
-  font-size: 18px;
-  font-weight: 300;
-  color: #333;
-  transition: 0.5s;
-  pointer-events: none;
-}
-
-section .container .contactform .formbox .inputBox input:focus~span,
-section .container .contactform .formbox .inputBox textarea:focus~span,
-section .container .contactform .formbox .inputBox input:valid~span,
-section .container .contactform .formbox .inputBox textarea:valid~span {
-  transform: translateY(-20px);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: #bb1a1a;
-}
-
 .button {
-  background: rgb(160, 13, 33);
+  background: $button;
   display: block;
   font-size: 15px;
   width: 150px;
@@ -222,5 +201,165 @@ img[_ngcontent-ovt-c45] {
 
 //footer-start
 
-
 //footer-end
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  section .container .containerinfo {
+    position: unset;
+
+    width: 100%;
+    height: calc(100% - 80px);
+    margin: 10px;
+    padding: 20px;
+  }
+
+  section .container .containerinfo .heading {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  section .container .containerinfo .info {
+    position: relative;
+    margin: 20px 0;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+
+  section .container .containerinfo .info li {
+    position: relative;
+    list-style: none;
+    display: flex;
+    margin: 20px 0;
+    cursor: pointer;
+    align-items: flex-start;
+  }
+
+  section .container .containerinfo .info li span:nth-child(1) {
+    width: 30px;
+    min-width: 30px;
+  }
+
+  section .container .containerinfo .info li span:nth-child(1) img {
+    max-width: 100%;
+    filter: invert(1);
+    opacity: 0.8;
+  }
+
+  section .container .containerinfo .info li span:nth-child(2) {
+    color: white;
+    margin-left: 10px;
+    font-weight: 300;
+    opacity: 1;
+  }
+
+  section .container .containerinfo .info li span:nth-child(1) img {
+    max-width: 100%;
+    filter: invert(1);
+    opacity: 0.5;
+  }
+
+  section .container .containerinfo .info li:hover span:nth-child(1) img,
+  section .container .containerinfo .info li:hover span:nth-child(2) {
+    opacity: 1;
+  }
+
+  section .container .containerinfo .sci {
+    position: relative;
+    display: flex;
+  }
+
+  section .container .containerinfo .sci li {
+    list-style: none;
+    margin-left: 15px;
+  }
+
+  section .container .containerinfo .sci li a {
+    text-decoration: none;
+  }
+
+  section .container .containerinfo .sci li a img {
+    filter: invert(1);
+    opacity: 0.5;
+  }
+
+  section .container .containerinfo .sci li:hover a img {
+    opacity: 0.5;
+  }
+
+  section .container .contactform {
+    position: unset;
+    margin: 10px;
+    padding: 20px;
+
+    background: #fff;
+
+    width: 100%;
+    height: 100%;
+
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  section .container .contactform .heading {
+    color: $button;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  section .container .contactform .formbox {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 30px;
+  }
+
+  section .container .contactform .formbox .inputBox {
+    position: relative;
+    margin: 0 0 35px 0;
+    width: 40%;
+  }
+
+  section .container .contactform .formbox .w50 {
+    width: 47%;
+  }
+
+  section .container .contactform .formbox .w100 {
+    width: 100%;
+  }
+
+  section .container .contactform .formbox .inputBox input,
+  section .container .contactform .formbox .inputBox textarea {
+    width: 100% !important;
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 300;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #777;
+    outline: none;
+  }
+
+  section .container .contactform .formbox .inputBox textarea {
+    min-height: 100px;
+  }
+
+  .button {
+    background: $button;
+    display: block;
+    font-size: 15px;
+    width: 150px;
+    padding: 10px 0;
+    height: auto;
+    color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 10px 0px grey;
+  }
+
+  img[_ngcontent-ovt-c45] {
+    width: 50px;
+  }
+
+  .button:hover {
+    color: rgb(13, 149, 228);
+  }
+}
